@@ -35,4 +35,10 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
-TestMarkdown/
+#Output Folder Content
+HTML/*
+!HTML/.gitkeep
+Markdown/*
+!Markdown/.gitkeep
+PDF/*
+!PDF/.gitkeep
