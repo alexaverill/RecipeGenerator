@@ -1,9 +1,10 @@
 
-FROM node:alpine
+FROM node:alpine 
 WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm i
 COPY . ./
-#Convert to production build rather then a dev build
-CMD ["npm", "start"]
+RUN npm run build
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
