@@ -1,0 +1,14 @@
+version: "3.9" 
+services:
+  consoleapp:
+    build: 
+      context: ./RecipeGenerator
+    volumes:
+      - ./Markdown:/Markdown
+      - ./HTML:/HTML
+      - ./PDF:/PDF
+  webapp:
+    build:
+      context: ./web-app
+    ports:
+      - 3000:3000
