@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Josefin+Sans&display=swap');
+
 body{
     width: 5.5in;
     height: 8.5in;
@@ -25,7 +27,8 @@ h1, h2, h3{
 }
 
 h1{
-    font-size: 26pt;
+    font-size: 24pt;
+    line-height: 30pt;
 }
 
 h2{
@@ -58,7 +61,7 @@ ol{
 .title{
     padding: 2% 5%;
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
     text-align: center;
     position: relative;
     top: -40px;
