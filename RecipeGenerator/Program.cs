@@ -5,6 +5,7 @@ using System.Net.Http;
 var markdownLocation = "/Markdown";
 var htmlOutput = "/HTML";
 var outputLocation = "/PDF";
+var styles = "/Styles";
 var endpoint = "http://webapp:3000";
 //wait for web-app to be ready
 var client = new HttpClient();
@@ -42,8 +43,9 @@ foreach(var recipe in recipesToConvert){
     File.WriteAllText($"{htmlOutput}/{recipe.Name}.html",recipe.HTMLContent);
 }
 var printer = new PlaywrightPrinter(endpoint);
-
+var stylesheet = await File.ReadAllTextAsync(Path.Combine(styles,"index.css"));
 foreach(var recipe in recipesToConvert){
-    var bytes = await printer.print(recipe);
+
+    var bytes = await printer.print(recipe,stylesheet);
     File.WriteAllBytes($"{outputLocation}/{recipe.Name}.pdf",bytes);
 }
