@@ -11,10 +11,11 @@ function App() {
     window.addEventListener('clearRecipe', clearRecipe);
     return ()=>window.removeEventListener('loadRecipe',clearRecipe);
   })
-  function loadRecipe(event){
+  async function loadRecipe(event){
     console.log(event)
     console.log(event.detail.data);
     setContent(event.detail.data);
+    await document.fonts.ready;
     document.body.classList.add("ready");
   }
   function clearRecipe(event){

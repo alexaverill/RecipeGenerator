@@ -16,7 +16,8 @@ namespace RecipeGenerator.Services{
             var content = HttpUtility.JavaScriptStringEncode(recipe.HTMLContent);
             var loadScript = $"window.dispatchEvent(new CustomEvent('loadRecipe', {{ detail:{{ data:\"{content}\" }} }}));";
             await page.EvaluateAsync(loadScript);
-            return await page.PdfAsync(new PagePdfOptions(){PreferCSSPageSize=true});
+            await page.EvaluateAsync("document.body.classList.contains(\"ready\")");
+            return await page.PdfAsync(new PagePdfOptions(){PreferCSSPageSize=true,Width="5.5in",Height="8.5in",PrintBackground=true});
         }
     }
 }
