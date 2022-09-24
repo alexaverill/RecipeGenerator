@@ -11,12 +11,14 @@ namespace RecipeGenerator.Services{
             using var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync();
             var page = await browser.NewPageAsync();
+            page.Console += (_, msg) => Console.WriteLine(msg.Text);
             await page.GotoAsync(Endpoint);
             await page.AddStyleTagAsync(new PageAddStyleTagOptions(){Content=stylesheet});
             var content = HttpUtility.JavaScriptStringEncode(recipe.HTMLContent);
             var loadScript = $"window.dispatchEvent(new CustomEvent('loadRecipe', {{ detail:{{ data:\"{content}\" }} }}));";
             await page.EvaluateAsync(loadScript);
             await page.EvaluateAsync("document.body.classList.contains(\"ready\")");
+            await page.EvaluateAsync("document.fonts.ready");
             return await page.PdfAsync(new PagePdfOptions(){PreferCSSPageSize=true,Width="5.5in",Height="8.5in",PrintBackground=true});
         }
     }

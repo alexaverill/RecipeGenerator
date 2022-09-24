@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Josefin+Sans&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Josefin+Sans&display=swap');
 body{
     width: 5.5in;
     height: 8.5in;
@@ -97,7 +97,7 @@ ul li::before {
     color: #D6BA73; /* Change the color */
     font-weight: bold; /* If you want it to be bold */
     font-size: 8pt;
-    display: inline-block; /* Needed to add space between the bullet and the text */
+    display: inline-swap; /* Needed to add space between the bullet and the text */
     width: 2em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
   }
